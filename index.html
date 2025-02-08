@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine | Marx Officials</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <button id="lang-btn">🌍 Change Language</button>
+    <style>
+        /* Reset and Layout */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Orbitron', sans-serif;
+            background: #121212;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            flex-grow: 1;
+            padding: 50px 20px;
+        }
+
+        /* Countdown Timer */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .countdown-item {
+            background: #222;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .countdown-label {
+            font-size: 14px;
+            display: block;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+
+        /* Language Button */
+        #lang-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #ff007f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        #lang-btn:hover {
+            background: #cc0066;
+        }
+
+        /* Video Styling */
+        video {
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            margin-top: 10px;
+        }
+
+        /* Buttons */
+        .buttons button {
+            padding: 15px 20px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yes-btn {
+            background: #ff007f;
+            color: white;
+        }
+
+        #yes-btn:hover {
+            background: #cc0066;
+            transform: scale(1.1);
+        }
+
+        #no-btn {
+            background: #444;
+            color: white;
+        }
+
+        #no-btn:hover {
+            background: #666;
+            transform: scale(1.1);
+        }
+
+        /* Personalization Section */
+        .personalize {
+            background: #1A1A1A;
+            color: white;
+            padding: 20px;
+            border-bottom: 2px solid #ff007f;
+        }
+
+        .personalize a, .footer a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background: #ff007f;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .personalize a:hover, .footer a:hover {
+            background: #cc0066;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            background: #121212;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+        }
+        @keyframes glow {
+        0% {
+            box-shadow: 0px -5px 15px white;
+        }
+        100% {
+            box-shadow: 0px -5px 15px pink;
+        }
+        
+    }
+    .countdown-container{
+        animation: glow 5s infinite alternate;
+    }
+    .glow {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, rgba(255, 255, 255, 0) 60%);
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        filter: blur(15px);
+        transition: transform 0.1s ease-out;
+    }
+    </style>
+</head>
+<body>
+<h1> </h1>
+<div class="glow"></div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-container">
+        <div class="countdown-item"><span id="days">00</span><span class="countdown-label">Days</span></div>
+        <div class="countdown-item"><span id="hours">00</span><span class="countdown-label">Hours</span></div>
+        <div class="countdown-item"><span id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+        <div class="countdown-item"><span id="seconds">00</span><span class="countdown-label">Seconds</span></div>
+    </div>
+
+    <!-- Language Button -->
+<!-- Valentine Banner -->
+<div id="valentine-banner">
+💖 Valentine Timer 💖</div>
+
+    <div class="container">
+        <!-- Background Music -->
+        <audio id="bg-music" src="media/valentine.mp3" loop></audio>
+
+        <!-- Love Video -->
+        <video id="love-video" src="media/love1.mp4" autoplay muted loop playsinline></video>
+
+        <h1 id="proposal-text">Will you be my Valentine? ❤️</h1>
+        <p id="convince-message"></p>
+
+        <div class="buttons">
+            <button id="yes-btn">Yes</button>
+            <button id="no-btn">No</button>
+        </div>
+
+        <!-- Hidden Final Section -->
+        <div id="final-section" class="hidden">
+            <video id="happy-video" src="media/love2.mp4" class="hidden" autoplay muted loop playsinline></video>
+            <p id="thank-you-msg">Thank you, my Valentine! 💖</p>
+        </div>
+    </div>
+
+    <!-- Personalization Section -->
+    <section class="personalize">
+        <p>Want a custom webpage for your special one?</p>
+        <a href="https://wa.me/2348108778025" target="_blank">Get Yours Now</a>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <p>Craving more? Dive in!</p>
+        <a href="https://whatsapp.com/channel/0029VajFEcFA89MlsCrxbD3s" target="_blank">Join Now</a>
+    </footer>
+
+    <script>
+        // Countdown Timer Script
+        function updateCountdown() {
+            const valentineDate = new Date(new Date().getFullYear(), 1, 14, 0, 0, 0); // Feb 14
+            const now = new Date();
+            let timeDiff = valentineDate - now;
+
+            if (timeDiff < 0) {
+                document.getElementById("countdown-timer").innerHTML = "<p>❤️ Happy Valentine's Day! ❤️</p>";
+                return;
+            }
+
+            let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+    </body><script>
+        const glow = document.querySelector('.glow');
+document.addEventListener('mousemove', (e) => {
+    glow.style.left = `${e.pageX}px`;
+    glow.style.top = `${e.pageY}px`;
+});
+    </script>
+<footer style="
+text-align: center;
+padding: 20px;
+background: #111;
+color: white;
+font-size: 14px;
+position: relative;
+box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.3);">
+    <p>&copy; 2024 Marx Officials. All rights reserved</p>
+    <p>Designed & Developed by <strong>Marx King</strong></p>
+    <p>
+        <a href="https://github/marxalone.com" class="footer-link">Privacy Policy</a>
+        <a href="https://github/marxalone.com" class="footer-link">Terms of Service</a>
+        <a href="mailto:officialsamuelsunny@gmail.com" class="footer-link">Contact</a>
+    </p>
+</footer>
+<style>
+    .footer-link {
+        color:  cyan;
+        text-decoration: none;
+        font-weight: bold;
+        position: relative;
+        transition: color 0.3s; text-shadow: 0.3s;
+    }
+
+    .footer-link::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom:  -2px;
+        width: 0;
+        background: cyan;
+        transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+    }
+
+    footer{
+        animation: glow 5s infinite alternate;
+    }
+    @keyframes glow {
+        0% {
+            box-shadow: 0px -5px 15px rgba(0, 255, 255, 0.3);
+        }
+        100% {
+            box-shadow: 0px -5px 15px rgba(255, 0, 255, 0.5);
+        }
+        
+    }
+</style>
+    <script src="script.js"></script>
+</body>
+</html>
